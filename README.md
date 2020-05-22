@@ -263,3 +263,6 @@ __if you choose 2, chatbot will consider last two sentences (one from user, and 
 - Python3 
 ## Author
 Po-Chih Huang / [@pochih](http://pochih.github.io/)
+
+## Contributor
+Nguyen Viet Phuong
