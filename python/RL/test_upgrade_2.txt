@@ -1,0 +1,26 @@
+--------------------------------------------------------------------------------
+Processing file 'test.py'
+ outputting to 'test_v2.py'
+--------------------------------------------------------------------------------
+
+'test.py' Line 65
+--------------------------------------------------------------------------------
+
+Renamed function 'tf.InteractiveSession' to 'tf.compat.v1.InteractiveSession'
+
+    Old:     sess = tf.InteractiveSession()
+                    ~~~~~~~~~~~~~~~~~~~~~   
+    New:     sess = tf.compat.v1.InteractiveSession()
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~   
+
+'test.py' Line 67
+--------------------------------------------------------------------------------
+
+Renamed function 'tf.train.Saver' to 'tf.compat.v1.train.Saver'
+
+    Old:     saver = tf.train.Saver()
+                     ~~~~~~~~~~~~~~   
+    New:     saver = tf.compat.v1.train.Saver()
+                     ~~~~~~~~~~~~~~~~~~~~~~~~   
+
+

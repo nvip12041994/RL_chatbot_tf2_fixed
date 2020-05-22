@@ -1,0 +1,384 @@
+--------------------------------------------------------------------------------
+Processing file 'rl_model.py'
+ outputting to 'rl_model_2.py'
+--------------------------------------------------------------------------------
+
+'rl_model.py' Line 16
+--------------------------------------------------------------------------------
+
+tf.device no longer takes function as an argument. 'devide_name_or_function' argument has been renamed to 'device_name'.
+
+    Old:         with tf.device("/cpu:0"):
+                      ~~~~~~~~~            
+    New:         with tf.device("/cpu:0"):
+                      ~~~~~~~~~            
+
+'rl_model.py' Line 17
+--------------------------------------------------------------------------------
+
+Renamed function 'tf.random_uniform' to 'tf.random.uniform'
+
+    Old:             self.Wemb = tf.Variable(tf.random_uniform([n_words, dim_hidden], -0.1, 0.1), name='Wemb')
+                                             ~~~~~~~~~~~~~~~~~                                                 
+    New:             self.Wemb = tf.Variable(tf.random.uniform([n_words, dim_hidden], -0.1, 0.1), name='Wemb')
+                                             ~~~~~~~~~~~~~~~~~                                                 
+
+'rl_model.py' Line 22
+--------------------------------------------------------------------------------
+
+Renamed function 'tf.random_uniform' to 'tf.random.uniform'
+
+    Old:         self.encode_vector_W = tf.Variable(tf.random_uniform([dim_wordvec, dim_hidden], -0.1, 0.1), name='encode_vector_W')
+                                                    ~~~~~~~~~~~~~~~~~                                                                
+    New:         self.encode_vector_W = tf.Variable(tf.random.uniform([dim_wordvec, dim_hidden], -0.1, 0.1), name='encode_vector_W')
+                                                    ~~~~~~~~~~~~~~~~~                                                                
+
+'rl_model.py' Line 25
+--------------------------------------------------------------------------------
+
+Renamed function 'tf.random_uniform' to 'tf.random.uniform'
+
+    Old:         self.embed_word_W = tf.Variable(tf.random_uniform([dim_hidden, n_words], -0.1, 0.1), name='embed_word_W')
+                                                 ~~~~~~~~~~~~~~~~~                                                         
+    New:         self.embed_word_W = tf.Variable(tf.random.uniform([dim_hidden, n_words], -0.1, 0.1), name='embed_word_W')
+                                                 ~~~~~~~~~~~~~~~~~                                                         
+
+'rl_model.py' Line 32
+--------------------------------------------------------------------------------
+
+Renamed function 'tf.placeholder' to 'tf.compat.v1.placeholder'
+
+    Old:         word_vectors = tf.placeholder(tf.float32, [self.batch_size, self.n_encode_lstm_step, self.dim_wordvec])
+                                ~~~~~~~~~~~~~~                                                                           
+    New:         word_vectors = tf.compat.v1.placeholder(tf.float32, [self.batch_size, self.n_encode_lstm_step, self.dim_wordvec])
+                                ~~~~~~~~~~~~~~~~~~~~~~~~                                                                           
+
+'rl_model.py' Line 34
+--------------------------------------------------------------------------------
+
+Renamed function 'tf.placeholder' to 'tf.compat.v1.placeholder'
+
+    Old:         caption = tf.placeholder(tf.int32, [self.batch_size, self.n_decode_lstm_step+1])
+                           ~~~~~~~~~~~~~~                                                         
+    New:         caption = tf.compat.v1.placeholder(tf.int32, [self.batch_size, self.n_decode_lstm_step+1])
+                           ~~~~~~~~~~~~~~~~~~~~~~~~                                                         
+
+'rl_model.py' Line 35
+--------------------------------------------------------------------------------
+
+Renamed function 'tf.placeholder' to 'tf.compat.v1.placeholder'
+
+    Old:         caption_mask = tf.placeholder(tf.float32, [self.batch_size, self.n_decode_lstm_step+1])
+                                ~~~~~~~~~~~~~~                                                           
+    New:         caption_mask = tf.compat.v1.placeholder(tf.float32, [self.batch_size, self.n_decode_lstm_step+1])
+                                ~~~~~~~~~~~~~~~~~~~~~~~~                                                           
+
+'rl_model.py' Line 38
+--------------------------------------------------------------------------------
+
+Renamed function 'tf.nn.xw_plus_b' to 'tf.compat.v1.nn.xw_plus_b'
+
+    Old:         wordvec_emb = tf.nn.xw_plus_b(word_vectors_flat, self.encode_vector_W, self.encode_vector_b ) # (batch_size*n_encode_lstm_step, dim_hidden)
+                               ~~~~~~~~~~~~~~~                                                                                                               
+    New:         wordvec_emb = tf.compat.v1.nn.xw_plus_b(word_vectors_flat, self.encode_vector_W, self.encode_vector_b ) # (batch_size*n_encode_lstm_step, dim_hidden)
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~                                                                                                               
+
+'rl_model.py' Line 41
+--------------------------------------------------------------------------------
+
+Renamed function 'tf.placeholder' to 'tf.compat.v1.placeholder'
+
+    Old:         reward = tf.placeholder(tf.float32, [self.batch_size, self.n_decode_lstm_step])
+                          ~~~~~~~~~~~~~~                                                         
+    New:         reward = tf.compat.v1.placeholder(tf.float32, [self.batch_size, self.n_decode_lstm_step])
+                          ~~~~~~~~~~~~~~~~~~~~~~~~                                                         
+
+'rl_model.py' Line 54
+--------------------------------------------------------------------------------
+
+Renamed function 'tf.get_variable_scope' to 'tf.compat.v1.get_variable_scope'
+
+    Old:                 tf.get_variable_scope().reuse_variables()
+                         ~~~~~~~~~~~~~~~~~~~~~                     
+    New:                 tf.compat.v1.get_variable_scope().reuse_variables()
+                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                     
+
+'rl_model.py' Line 56
+--------------------------------------------------------------------------------
+
+Renamed function 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+
+    Old:             with tf.variable_scope("LSTM1"):
+                          ~~~~~~~~~~~~~~~~~           
+    New:             with tf.compat.v1.variable_scope("LSTM1"):
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~           
+
+'rl_model.py' Line 60
+--------------------------------------------------------------------------------
+
+Renamed function 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+
+    Old:             with tf.variable_scope("LSTM2"):
+                          ~~~~~~~~~~~~~~~~~           
+    New:             with tf.compat.v1.variable_scope("LSTM2"):
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~           
+
+'rl_model.py' Line 65
+--------------------------------------------------------------------------------
+
+tf.device no longer takes function as an argument. 'devide_name_or_function' argument has been renamed to 'device_name'.
+
+    Old:             with tf.device("/cpu:0"):
+                          ~~~~~~~~~            
+    New:             with tf.device("/cpu:0"):
+                          ~~~~~~~~~            
+
+'rl_model.py' Line 66
+--------------------------------------------------------------------------------
+
+WARNING: validate_indices argument has been removed.
+Added keyword 'params' to reordered function 'tf.nn.embedding_lookup'
+Added keyword 'ids' to reordered function 'tf.nn.embedding_lookup'
+
+    Old:                 current_embed = tf.nn.embedding_lookup(self.Wemb, caption[:, i])
+                                         ~~~~~~~~~~~~~~~~~~~~~~                           
+    New:                 current_embed = tf.nn.embedding_lookup(params=self.Wemb, ids=caption[:, i])
+                                         ~~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~           ~~~~               
+
+'rl_model.py' Line 68
+--------------------------------------------------------------------------------
+
+Renamed function 'tf.get_variable_scope' to 'tf.compat.v1.get_variable_scope'
+
+    Old:             tf.get_variable_scope().reuse_variables()
+                     ~~~~~~~~~~~~~~~~~~~~~                     
+    New:             tf.compat.v1.get_variable_scope().reuse_variables()
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                     
+
+'rl_model.py' Line 70
+--------------------------------------------------------------------------------
+
+Renamed function 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+
+    Old:             with tf.variable_scope("LSTM1"):
+                          ~~~~~~~~~~~~~~~~~           
+    New:             with tf.compat.v1.variable_scope("LSTM1"):
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~           
+
+'rl_model.py' Line 73
+--------------------------------------------------------------------------------
+
+Renamed function 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+
+    Old:             with tf.variable_scope("LSTM2"):
+                          ~~~~~~~~~~~~~~~~~           
+    New:             with tf.compat.v1.variable_scope("LSTM2"):
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~           
+
+'rl_model.py' Line 79
+--------------------------------------------------------------------------------
+
+Renamed function 'tf.sparse_to_dense' to 'tf.compat.v1.sparse_to_dense'
+
+    Old:             onehot_labels = tf.sparse_to_dense(concated, tf.stack([self.batch_size, self.n_words]), 1.0, 0.0)
+                                     ~~~~~~~~~~~~~~~~~~                                                                
+    New:             onehot_labels = tf.compat.v1.sparse_to_dense(concated, tf.stack([self.batch_size, self.n_words]), 1.0, 0.0)
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~                                                                
+
+'rl_model.py' Line 81
+--------------------------------------------------------------------------------
+
+Renamed function 'tf.nn.xw_plus_b' to 'tf.compat.v1.nn.xw_plus_b'
+
+    Old:             logit_words = tf.nn.xw_plus_b(output2, self.embed_word_W, self.embed_word_b)
+                                   ~~~~~~~~~~~~~~~                                                
+    New:             logit_words = tf.compat.v1.nn.xw_plus_b(output2, self.embed_word_W, self.embed_word_b)
+                                   ~~~~~~~~~~~~~~~~~~~~~~~~~                                                
+
+'rl_model.py' Line 83
+--------------------------------------------------------------------------------
+
+tf.nn.softmax_cross_entropy_with_logits behavior has changed. 'labels' needs to be wrapped with tf.stop_gradient to keep the old behavior. Also, 'dim' argument has been renamed to 'axis'.
+
+    Old:             cross_entropy = tf.nn.softmax_cross_entropy_with_logits(logits=logit_words, labels=onehot_labels)
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                                           
+    New:             cross_entropy = tf.nn.softmax_cross_entropy_with_logits(logits=logit_words, labels=onehot_labels)
+                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                                           
+
+'rl_model.py' Line 88
+--------------------------------------------------------------------------------
+
+Added keyword 'input_tensor' to reordered function 'tf.reduce_sum'
+
+    Old:             pg_current_loss = tf.reduce_sum(pg_cross_entropy) / self.batch_size
+                                                                                         
+    New:             pg_current_loss = tf.reduce_sum(input_tensor=pg_cross_entropy) / self.batch_size
+                                                     ~~~~~~~~~~~~~                                    
+
+'rl_model.py' Line 91
+--------------------------------------------------------------------------------
+
+Renamed function 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+Renamed function 'tf.get_variable_scope' to 'tf.compat.v1.get_variable_scope'
+
+    Old:         with tf.variable_scope(tf.get_variable_scope(), reuse=False):
+                      ~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~                  
+    New:         with tf.compat.v1.variable_scope(tf.compat.v1.get_variable_scope(), reuse=False):
+                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                  
+
+'rl_model.py' Line 92
+--------------------------------------------------------------------------------
+
+Renamed function 'tf.train.AdamOptimizer' to 'tf.compat.v1.train.AdamOptimizer'
+
+    Old:             train_op = tf.train.AdamOptimizer(self.lr).minimize(pg_loss)
+                                ~~~~~~~~~~~~~~~~~~~~~~                            
+    New:             train_op = tf.compat.v1.train.AdamOptimizer(self.lr).minimize(pg_loss)
+                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                            
+
+'rl_model.py' Line 108
+--------------------------------------------------------------------------------
+
+Renamed function 'tf.placeholder' to 'tf.compat.v1.placeholder'
+
+    Old:         word_vectors = tf.placeholder(tf.float32, [self.batch_size, self.n_encode_lstm_step, self.dim_wordvec])
+                                ~~~~~~~~~~~~~~                                                                           
+    New:         word_vectors = tf.compat.v1.placeholder(tf.float32, [self.batch_size, self.n_encode_lstm_step, self.dim_wordvec])
+                                ~~~~~~~~~~~~~~~~~~~~~~~~                                                                           
+
+'rl_model.py' Line 111
+--------------------------------------------------------------------------------
+
+Renamed function 'tf.nn.xw_plus_b' to 'tf.compat.v1.nn.xw_plus_b'
+
+    Old:         wordvec_emb = tf.nn.xw_plus_b(word_vectors_flat, self.encode_vector_W, self.encode_vector_b)
+                               ~~~~~~~~~~~~~~~                                                                
+    New:         wordvec_emb = tf.compat.v1.nn.xw_plus_b(word_vectors_flat, self.encode_vector_W, self.encode_vector_b)
+                               ~~~~~~~~~~~~~~~~~~~~~~~~~                                                                
+
+'rl_model.py' Line 126
+--------------------------------------------------------------------------------
+
+Renamed function 'tf.get_variable_scope' to 'tf.compat.v1.get_variable_scope'
+
+    Old:                 tf.get_variable_scope().reuse_variables()
+                         ~~~~~~~~~~~~~~~~~~~~~                     
+    New:                 tf.compat.v1.get_variable_scope().reuse_variables()
+                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                     
+
+'rl_model.py' Line 128
+--------------------------------------------------------------------------------
+
+Renamed function 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+
+    Old:             with tf.variable_scope("LSTM1"):
+                          ~~~~~~~~~~~~~~~~~           
+    New:             with tf.compat.v1.variable_scope("LSTM1"):
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~           
+
+'rl_model.py' Line 132
+--------------------------------------------------------------------------------
+
+Renamed function 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+
+    Old:             with tf.variable_scope("LSTM2"):
+                          ~~~~~~~~~~~~~~~~~           
+    New:             with tf.compat.v1.variable_scope("LSTM2"):
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~           
+
+'rl_model.py' Line 136
+--------------------------------------------------------------------------------
+
+Renamed function 'tf.get_variable_scope' to 'tf.compat.v1.get_variable_scope'
+
+    Old:             tf.get_variable_scope().reuse_variables()
+                     ~~~~~~~~~~~~~~~~~~~~~                     
+    New:             tf.compat.v1.get_variable_scope().reuse_variables()
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~                     
+
+'rl_model.py' Line 140
+--------------------------------------------------------------------------------
+
+tf.device no longer takes function as an argument. 'devide_name_or_function' argument has been renamed to 'device_name'.
+
+    Old:                 with tf.device('/cpu:0'):
+                              ~~~~~~~~~            
+    New:                 with tf.device('/cpu:0'):
+                              ~~~~~~~~~            
+
+'rl_model.py' Line 141
+--------------------------------------------------------------------------------
+
+WARNING: validate_indices argument has been removed.
+Added keyword 'params' to reordered function 'tf.nn.embedding_lookup'
+Added keyword 'ids' to reordered function 'tf.nn.embedding_lookup'
+
+    Old:                     current_embed = tf.nn.embedding_lookup(self.Wemb, tf.ones([self.batch_size], dtype=tf.int64))
+                                             ~~~~~~~~~~~~~~~~~~~~~~                                                        
+    New:                     current_embed = tf.nn.embedding_lookup(params=self.Wemb, ids=tf.ones([self.batch_size], dtype=tf.int64))
+                                             ~~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~           ~~~~                                            
+
+'rl_model.py' Line 143
+--------------------------------------------------------------------------------
+
+Renamed function 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+
+    Old:             with tf.variable_scope("LSTM1"):
+                          ~~~~~~~~~~~~~~~~~           
+    New:             with tf.compat.v1.variable_scope("LSTM1"):
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~           
+
+'rl_model.py' Line 146
+--------------------------------------------------------------------------------
+
+Renamed function 'tf.variable_scope' to 'tf.compat.v1.variable_scope'
+
+    Old:             with tf.variable_scope("LSTM2"):
+                          ~~~~~~~~~~~~~~~~~           
+    New:             with tf.compat.v1.variable_scope("LSTM2"):
+                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~           
+
+'rl_model.py' Line 149
+--------------------------------------------------------------------------------
+
+Renamed function 'tf.nn.xw_plus_b' to 'tf.compat.v1.nn.xw_plus_b'
+
+    Old:             logit_words = tf.nn.xw_plus_b(output2, self.embed_word_W, self.embed_word_b)
+                                   ~~~~~~~~~~~~~~~                                                
+    New:             logit_words = tf.compat.v1.nn.xw_plus_b(output2, self.embed_word_W, self.embed_word_b)
+                                   ~~~~~~~~~~~~~~~~~~~~~~~~~                                                
+
+'rl_model.py' Line 150
+--------------------------------------------------------------------------------
+
+Added keyword 'input' to reordered function 'tf.argmax'
+Added keyword 'axis' to reordered function 'tf.argmax'
+
+    Old:             max_prob_index = tf.argmax(logit_words, 1)
+                                                                
+    New:             max_prob_index = tf.argmax(input=logit_words, axis=1)
+                                                ~~~~~~             ~~~~~   
+
+'rl_model.py' Line 154
+--------------------------------------------------------------------------------
+
+tf.device no longer takes function as an argument. 'devide_name_or_function' argument has been renamed to 'device_name'.
+
+    Old:             with tf.device("/cpu:0"):
+                          ~~~~~~~~~            
+    New:             with tf.device("/cpu:0"):
+                          ~~~~~~~~~            
+
+'rl_model.py' Line 155
+--------------------------------------------------------------------------------
+
+WARNING: validate_indices argument has been removed.
+Added keyword 'params' to reordered function 'tf.nn.embedding_lookup'
+Added keyword 'ids' to reordered function 'tf.nn.embedding_lookup'
+
+    Old:                 current_embed = tf.nn.embedding_lookup(self.Wemb, max_prob_index)
+                                         ~~~~~~~~~~~~~~~~~~~~~~                            
+    New:                 current_embed = tf.nn.embedding_lookup(params=self.Wemb, ids=max_prob_index)
+                                         ~~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~           ~~~~                
+
+
