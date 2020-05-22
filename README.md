@@ -256,12 +256,12 @@ __if you choose 2, chatbot will consider last two sentences (one from user, and 
 
 
 ## Environment
-- OS: CentOS Linux release 7.3.1611 (Core)
+- OS: Ubuntu 18.04
 - CPU: Intel(R) Xeon(R) CPU E3-1230 v5 @ 3.30GHz
 - GPU: GeForce GTX 1080 TI 11GB
 - Memory: 32GB DDR3
 - Python3 
-## Author
+## Original Author
 Po-Chih Huang / [@pochih](http://pochih.github.io/)
 
 ## Contributor
